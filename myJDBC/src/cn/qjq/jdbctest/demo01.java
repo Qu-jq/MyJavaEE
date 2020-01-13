@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *测试跟数据库建立连接
+ *测试与数据库建立连接
  * Created by qjq on 2020/1/13 20:22
  */
 public class demo01 {
