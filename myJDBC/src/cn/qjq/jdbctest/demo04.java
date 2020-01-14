@@ -25,8 +25,6 @@ public class demo04 {
             while (rs.next()){
                 System.out.println(rs.getInt(1)+"--"+rs.getString(2)+"--"+rs.getInt(3));
             }
-            //关闭端口连接
-
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
