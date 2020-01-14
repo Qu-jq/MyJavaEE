@@ -1,9 +1,6 @@
 package cn.qjq.jdbctest;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  *测试PreparedStatement基本用法
@@ -11,22 +8,24 @@ import java.sql.SQLException;
  */
 public class demo03 {
     public static void main(String[] args) {
-
+        Connection connection=null;
+        PreparedStatement ps=null;
+        PreparedStatement ps2=null;
         try {
             //加载驱动类
             Class.forName("com.mysql.jdbc.Driver");
             //建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
             System.out.println(connection);
             //使用PreparedStatement接口执行sql
                 //第一种插入数据方式
             String sql = "INSERT INTO users(username,age) VALUES('小区',15)";
-            PreparedStatement ps = connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
             ps.execute();
 
                 //第二种插入数据方式
             String sql2 = "INSERT INTO users(username,age,data) VALUES(?,?,?)";//?为占位符
-            PreparedStatement ps2 = connection.prepareStatement(sql2);
+            ps2 = connection.prepareStatement(sql2);
             /*ps2.setString(1,"小花");//参数索引是从1开始的
             ps2.setInt(2,14);
             ps2.setDate(3,new java.sql.Date(System.currentTimeMillis()));*/
@@ -38,6 +37,29 @@ public class demo03 {
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+        }finally {
+            //先开的后关
+            try {
+                if(ps2!=null){
+                    ps2.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if(ps!=null){
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if(connection!=null){
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

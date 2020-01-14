@@ -11,15 +11,16 @@ import java.sql.Statement;
  */
 public class demo02 {
     public static void main(String[] args) {
-
+        Connection connection=null;
+        Statement statement=null;
         try {
             //加载驱动类
             Class.forName("com.mysql.jdbc.Driver");
             //建立连接
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
             System.out.println(connection);
             //通过Statement接口，SQL语句执行
-            Statement statement = connection.createStatement();
+            statement = connection.createStatement();
            /* String username = "小区";
             String sql = "INSERT INTO users(username,age) VALUES('"+username+"',16)";
             statement.execute(sql);//users表中被成功插入一条记录*/
@@ -31,6 +32,22 @@ public class demo02 {
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+        }finally {
+            //先开的后关
+            try {
+                if(statement!=null){
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if(connection!=null){
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
