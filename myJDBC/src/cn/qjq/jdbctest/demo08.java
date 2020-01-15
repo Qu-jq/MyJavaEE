@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 
 /**
  *测试时间类型Date  Timestamp  取出指定时间段的数据
- * Created by qjq on 2020/1/13 20:22
+ * Created by qjq on 2020/1/15 15:00
  */
 public class demo08 {
     public static long str2Date(String strDate){

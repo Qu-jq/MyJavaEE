@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
  *测试CLOB 文本大对象的使用
  * 将文本、字符串插入数据库的CLOB字段
  * 取出CLOB数据
- * Created by qjq on 2020/1/13 20:22
+ * Created by qjq on 2020/1/15 15:55
  */
 public class demo09 {
 

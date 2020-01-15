@@ -6,7 +6,7 @@ import java.sql.*;
 /**
  *测试BLOB
  * 写入和读取
- * Created by qjq on 2020/1/13 20:22
+ * Created by qjq on 2020/1/15 16:22
  */
 public class demo10 {
 
