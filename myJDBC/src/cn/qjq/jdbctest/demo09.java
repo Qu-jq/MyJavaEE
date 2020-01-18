@@ -27,13 +27,14 @@ public class demo09 {
             System.out.println(connection);
             //执行SQL
             ps = connection.prepareStatement("INSERT INTO jdbcuser(username,myInfo) VALUES(?,?)");
-            ps.setString(1,"小渠");
+            ps.setString(1,"小mi");
             //第一种方式 将文本插入数据库的CLOB字段
             /*try {
                 ps.setClob(2,new FileReader(new File("a.txt")));//将文本内容直接输入到数据库
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-            }*/
+            }
+            ps.executeUpdate();*/
             //第二种方式 将字符串插入数据库的CLOB字段
            /* ps.setClob(2,new BufferedReader(new InputStreamReader(new ByteArrayInputStream("hello the young boy!".getBytes()))));
             ps.executeUpdate();*/
@@ -51,7 +52,7 @@ public class demo09 {
 
             }
 
-        } catch (ClassNotFoundException | SQLException | IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }finally {
             //先开的后关
